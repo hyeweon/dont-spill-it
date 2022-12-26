@@ -9,13 +9,14 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private Transform spineTr;
 
-    [SerializeField] private Renderer coffeeRen;
-
+    [SerializeField] private float rotSpeed;
+    [SerializeField] private float rotClamp;
 
     private Vector3 firstTouch;
     private Vector3 lastTouch;
-    private Vector3 dir;
+    [SerializeField] private Vector3 dir;
     private bool isMove = false;
+
 
     void Update()
     {
@@ -24,12 +25,12 @@ public class PlayerMove : MonoBehaviour
             firstTouch.x = Input.mousePosition.x;
             isMove = true;
         }
-        if (Input.GetKey(KeyCode.Mouse0))
+        else if (Input.GetKey(KeyCode.Mouse0))
         {
             lastTouch.x = Input.mousePosition.x;
             dir = lastTouch - firstTouch;
         }
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             isMove = false;
         }
@@ -38,10 +39,7 @@ public class PlayerMove : MonoBehaviour
     private void LateUpdate()
     {
         Move();
-        if (isMove)
-        {
-            Rotate();
-        }
+        Rotate();
     }
 
     void Move()
@@ -51,19 +49,13 @@ public class PlayerMove : MonoBehaviour
         transform.position = pos;
     }
 
-    [SerializeField] private float rotSpeed; 
-    [SerializeField] private float rotClamp;
+    private Quaternion lastRot;
     void Rotate()
     {
-        var angle = (spineTr.rotation.z - dir.x);
+        var angle = (lastRot.z - dir.x);
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
-        //print("Angle: " + (spineTr.rotation.z - dir.x));
-        if(-rotClamp <= angle || rotClamp <= angle )
-        {
-            print("감소합니다. " + (coffeeRen.material.GetFloat("_Fill") - Time.deltaTime));
-            coffeeRen.material.SetFloat("_Fill", coffeeRen.material.GetFloat("_Fill") - Time.deltaTime);
-        }
-        
-        spineTr.rotation = Quaternion.Lerp(spineTr.rotation, rot, rotSpeed * Time.deltaTime);
+
+        spineTr.rotation = Quaternion.Lerp(lastRot, rot, rotSpeed * Time.deltaTime);
+        lastRot = spineTr.rotation;
     }
 }
