@@ -130,10 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5660497099715171399, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 329e3f24c9b1f4678a6ed67cada0c071, type: 2}
     - target: {fileID: 5916331525073308561, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -182,54 +178,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: coffee_01
       objectReference: {fileID: 0}
-    - target: {fileID: 6858968060489728543, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 6858968060489728543, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 6858968060489728543, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 7277795086031074493, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8350688083871094383, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
---- !u!1 &1120838355 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4530501793945529336, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
-  m_PrefabInstance: {fileID: 1120838354}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &1120838356 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 5660497099715171399, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
-  m_PrefabInstance: {fileID: 1120838354}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1120838357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120838355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94cd5fbe2e29145dabbe11efbcfeab9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rend: {fileID: 1120838356}
-  MaxWobble: 0.03
-  WobbleSpeed: 1
-  Recovery: 1
 --- !u!1 &1956740935
 GameObject:
   m_ObjectHideFlags: 0
