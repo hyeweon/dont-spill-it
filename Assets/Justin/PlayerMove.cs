@@ -8,23 +8,14 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float forwardPower;
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private Transform spineTr;
-    [SerializeField] private Transform spineTr2;
+
+    [SerializeField] private Renderer coffeeRen;
+
 
     private Vector3 firstTouch;
     private Vector3 lastTouch;
     private Vector3 dir;
     private bool isMove = false;
-
-    private void Start()
-    {
-        spineTr2 = playerAnimator.GetBoneTransform(HumanBodyBones.Spine);
-    }
-
-    private void FixedUpdate()
-    {
-        
-            Move();
-    }
 
     void Update()
     {
@@ -46,6 +37,7 @@ public class PlayerMove : MonoBehaviour
 
     private void LateUpdate()
     {
+        Move();
         if (isMove)
         {
             Rotate();
@@ -59,16 +51,19 @@ public class PlayerMove : MonoBehaviour
         transform.position = pos;
     }
 
+    [SerializeField] private float rotSpeed; 
+    [SerializeField] private float rotClamp;
     void Rotate()
     {
-        print("dir: " + dir.x);
-        var moveVec = new Vector3(spineTr.rotation.x, spineTr.rotation.y, -dir.x);
-        Vector3 pos = spineTr.rotation * (moveVec * speed * Time.deltaTime);
-        spineTr.rotation = Quaternion.Euler(pos);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
+        var angle = (spineTr.rotation.z - dir.x);
+        Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
+        //print("Angle: " + (spineTr.rotation.z - dir.x));
+        if(-rotClamp <= angle || rotClamp <= angle )
+        {
+            print("감소합니다. " + (coffeeRen.material.GetFloat("_Fill") - Time.deltaTime));
+            coffeeRen.material.SetFloat("_Fill", coffeeRen.material.GetFloat("_Fill") - Time.deltaTime);
+        }
         
+        spineTr.rotation = Quaternion.Lerp(spineTr.rotation, rot, rotSpeed * Time.deltaTime);
     }
 }

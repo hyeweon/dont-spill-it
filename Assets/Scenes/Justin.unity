@@ -235,7 +235,9 @@ MonoBehaviour:
   forwardPower: 80
   playerAnimator: {fileID: 409553254}
   spineTr: {fileID: 2111424763}
-  spineTr2: {fileID: 0}
+  coffeeRen: {fileID: 2122155033}
+  rotSpeed: 1000
+  rotClamp: 70
 --- !u!54 &409553257
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -484,6 +486,11 @@ BoxCollider:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6892263226202539313, guid: 24ca38a938593f4419fe1942b80cb4a8, type: 3}
   m_PrefabInstance: {fileID: 231888721}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2122155033 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5660497099715171399, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
+  m_PrefabInstance: {fileID: 6165904322158436095}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3417735342211970621
 PrefabInstance:
