@@ -31,7 +31,7 @@ public class Coffee : MonoBehaviour
             coffeeFill = Mathf.Clamp(coffeeRenderer.material.GetFloat("_Fill") - 0.1f, -1f, 1f);
             coffeeRenderer.material.SetFloat("_Fill", coffeeFill);
 
-            if (coffeeFill < 0.1f)
+            if (coffeeFill < 0.5f)
             {
                 Debug.Log("Game Over");
             }
