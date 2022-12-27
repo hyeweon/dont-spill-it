@@ -7,12 +7,15 @@ public delegate void PlayerEventHandler();
 public class Player : MonoBehaviour
 {
     private int goalLayer;
+    private int fillLayer;
 
     public event PlayerEventHandler reachGoalEvent;
+    public event PlayerEventHandler fillLiquidEvent;
 
     void Start()
     {
         goalLayer = LayerMask.NameToLayer("Goal");
+        fillLayer = LayerMask.NameToLayer("Fill");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -20,6 +23,12 @@ public class Player : MonoBehaviour
         if (other.gameObject.layer == goalLayer)
         {
             reachGoalEvent();
+        }
+
+        if(other.gameObject.layer == fillLayer)
+        {
+            print("Enter");
+            fillLiquidEvent();
         }
     }
 }

@@ -9,13 +9,15 @@ public class FollowPlayer : MonoBehaviour
 
     [SerializeField] private bool isYFollowOnly = false;
     private float disZ = 0;
+    private float disY = 0;
 
     private void LateUpdate()
     {
         if (isYFollowOnly == false)
         {
             disZ = player.position.z + -9.56f; 
-            Vector3 target_pos = new Vector3(player.position.x, transform.position.y, disZ);
+            disY = player.position.y + 4.8f;
+            Vector3 target_pos = new Vector3(player.position.x, disY, disZ);
             transform.position = target_pos;
             transform.LookAt(target_pos);
         }

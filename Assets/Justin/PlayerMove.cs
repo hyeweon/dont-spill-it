@@ -104,7 +104,8 @@ public class PlayerMove : MonoBehaviour
     private void Rotate()
     {
         var angle = rotAngel +(-dir.x * Time.deltaTime);
-        angle = (angle > 180) ? angle - 360 : angle;
+        //angle = (angle > 180) ? angle % 180 : angle;
+        angle = Mathf.Clamp(angle, -180, 180);
 
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
 

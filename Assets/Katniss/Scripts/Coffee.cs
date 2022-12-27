@@ -15,7 +15,9 @@ public class Coffee : MonoBehaviour
     public float coffeeFill;
 
     [SerializeField] private Renderer coffeeRenderer;
-    [SerializeField] private ParticleSystem coffeeParticleSystem;
+    [SerializeField] private ParticleSystem[] coffeeParticleSystem;
+
+    [SerializeField] private Player player;
 
     void Start()
     {
@@ -25,6 +27,8 @@ public class Coffee : MonoBehaviour
 
         coffeeFill = 1f;
         coffeeRenderer.material.SetFloat(fillHash, coffeeFill);
+
+        player.fillLiquidEvent += new PlayerEventHandler(FillLiquid_Full);
     }
 
     void Update()
@@ -37,7 +41,10 @@ public class Coffee : MonoBehaviour
         {
             coffeeFill = Mathf.Clamp(coffeeRenderer.material.GetFloat(fillHash) - 0.05f, -1f, 1f);
             coffeeRenderer.material.SetFloat(fillHash, coffeeFill);
-            coffeeParticleSystem.Play();
+            if(transform.rotation.z < 0)
+                coffeeParticleSystem[0].Play();
+            else
+                coffeeParticleSystem[1].Play();
 
             if (coffeeFill < gameOverFill)
             {
@@ -49,5 +56,23 @@ public class Coffee : MonoBehaviour
 
             Debug.Log($"spill {currAngleThreshold}");
         }
+    }
+
+    private void FillLiquid_Full()
+    {
+        StartCoroutine(FillByCoroutine());
+    }
+
+    IEnumerator FillByCoroutine()
+    {
+        while (coffeeRenderer.material.GetFloat(fillHash) < 0.98f)
+        {
+            yield return null;
+            var value = Mathf.Lerp(0, 1, 100 * Time.deltaTime);
+            print("?????: " + value);
+            coffeeRenderer.material.SetFloat(fillHash, value);
+        }
+
+        coffeeRenderer.material.SetFloat(fillHash, 1);
     }
 }
