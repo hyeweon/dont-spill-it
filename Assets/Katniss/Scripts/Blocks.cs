@@ -4,29 +4,30 @@ using UnityEngine;
 
 public class Blocks : MonoBehaviour
 {
-    private float effectBlockCount;
+    private int effectBlockCount;
 
-    [SerializeField] private Renderer[] blockRenderers;
+    [SerializeField] private Color[] colors;
+
+    public Renderer[] blockRenderers;
 
     void Start()
     {
-        
+        effectBlockCount = 40;
+        StartCoroutine(BlockEffect());
     }
 
     IEnumerator BlockEffect()
     {
-        var effectTime = 3f;
-        var cycleTime = effectTime / effectBlockCount;
-        var idx = 0;
+        var effectTime = 4f;
+        int idx = 0;
 
-        for (var time = 0f; time <= effectTime; time += Time.deltaTime)
+        for (var time = 0f; time < effectTime; time += Time.deltaTime)
         {
-            if (Mathf.Lerp(0f, effectBlockCount, time / effectTime) < cycleTime * idx)
-                yield break;
-
-            idx++;
-
-            //blockRenderers[idx].material;
+            if (Mathf.Lerp(0f, (float)effectBlockCount, time / effectTime) > idx)
+            {
+                blockRenderers[idx].material.color = colors[idx / 4];
+                idx++;
+            }
 
             yield return null;
         }

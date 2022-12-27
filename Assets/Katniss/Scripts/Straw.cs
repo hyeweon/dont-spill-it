@@ -23,7 +23,7 @@ public class Straw : MonoBehaviour
 
         for (var time = 0f; time <= effectTime; time += Time.deltaTime)
         {
-            strawFill = Mathf.Clamp(Mathf.Lerp(0f, remainingCoffee, time / effectTime), -1f, 1f);
+            strawFill = Mathf.Clamp(Mathf.Lerp(0f, remainingCoffee, time / effectTime), 0f, 1f);
             strawRenderer.material.SetFloat(fillHash, strawFill);
 
             yield return null;
