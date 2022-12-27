@@ -14,7 +14,8 @@ public class PlayerMove : MonoBehaviour
 
     private Vector3 firstTouch;
     private Vector3 lastTouch;
-    [SerializeField] private Vector3 dir;
+    private Quaternion lastRot;
+    private Vector3 dir;
     private bool isMove = false;
 
 
@@ -38,21 +39,47 @@ public class PlayerMove : MonoBehaviour
 
     private void LateUpdate()
     {
-        Move();
+        //Move();
+        AutoRotate();
         Rotate();
     }
 
-    void Move()
+    private void Move()
     {
         var moveVec = new Vector3(0, 0, forwardPower);
         Vector3 pos = transform.position + (moveVec * speed * 0.005f * Time.deltaTime);
         transform.position = pos;
     }
 
-    private Quaternion lastRot;
-    void Rotate()
+    [SerializeField] private float autoRotSpeed = 5;
+    [SerializeField] private float autoRotMultiply = 0.01f;
+    [SerializeField] private bool isRight = false;
+
+
+    private void AutoRotate()
     {
-        var angle = (lastRot.z - dir.x);
+        if (isRight == true && autoRotMultiply < 1)
+        {
+            autoRotMultiply *= -1;
+        }
+        if (isRight == false && autoRotMultiply > -1)
+        {
+            autoRotMultiply *= -1;
+        }
+
+        autoRotSpeed = Mathf.Clamp(autoRotSpeed + (Time.deltaTime * autoRotMultiply), -rotClamp, rotClamp);
+        var angle = lastRot.z - (autoRotSpeed);
+
+        Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        spineTr.rotation = Quaternion.Lerp(lastRot, rot, rotSpeed * Time.deltaTime);
+        lastRot = spineTr.rotation;
+    }
+
+    private void Rotate()
+    {
+        var angle = Mathf.Clamp(lastRot.z - dir.x, -rotClamp, rotClamp);
+        print("Angel: " + angle);
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
 
         spineTr.rotation = Quaternion.Lerp(lastRot, rot, rotSpeed * Time.deltaTime);

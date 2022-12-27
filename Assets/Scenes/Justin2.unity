@@ -333,7 +333,9 @@ MonoBehaviour:
   spineTr: {fileID: 2111424763}
   rotSpeed: 500
   rotClamp: 0
-  dir: {x: 0, y: 0, z: 0}
+  autoRotSpeed: 5
+  autoRotMultiply: 5
+  isRight: 0
 --- !u!54 &409553257
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -604,12 +606,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.14890005, y: -0, z: -0, w: 0.98885226}
-  m_LocalPosition: {x: 0.0066668196, y: 2.0700002, z: -3.1866672}
-  m_LocalScale: {x: 0.33333334, y: 0.3333333, z: 0.3333333}
+  m_LocalPosition: {x: 9.96, y: 6.2400007, z: -12.020001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1684267451}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 17.126, y: 0, z: 0}
 --- !u!1 &1345286486 stripped
 GameObject:
@@ -654,6 +656,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9162484748627739507, guid: da907470eedb245ce89761e385f07612, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99827725
+      objectReference: {fileID: 0}
+    - target: {fileID: -9162484748627739507, guid: da907470eedb245ce89761e385f07612, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.030947518
+      objectReference: {fileID: 0}
+    - target: {fileID: -9162484748627739507, guid: da907470eedb245ce89761e385f07612, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.030237893
+      objectReference: {fileID: 0}
+    - target: {fileID: -9162484748627739507, guid: da907470eedb245ce89761e385f07612, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.03962868
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da907470eedb245ce89761e385f07612, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -729,11 +747,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: da907470eedb245ce89761e385f07612, type: 3}
   m_PrefabInstance: {fileID: 1684267449}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1684267451 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: da907470eedb245ce89761e385f07612, type: 3}
-  m_PrefabInstance: {fileID: 1684267449}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1684267452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -751,8 +764,10 @@ MonoBehaviour:
   playerAnimator: {fileID: 1684267455}
   spineTr: {fileID: 55887414}
   rotSpeed: 10
-  rotClamp: 0
-  dir: {x: 0, y: 0, z: 0}
+  rotClamp: 90
+  autoRotSpeed: 5
+  autoRotMultiply: 50
+  isRight: 0
 --- !u!136 &1684267453
 CapsuleCollider:
   m_ObjectHideFlags: 0
