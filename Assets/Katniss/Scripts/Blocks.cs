@@ -7,6 +7,7 @@ public class Blocks : MonoBehaviour
     private int effectBlockCount;
 
     [SerializeField] private Color[] colors;
+    [SerializeField] FollowPlayer followPlayer;
 
     public Renderer[] blockRenderers;
 
@@ -25,6 +26,8 @@ public class Blocks : MonoBehaviour
         {
             if (Mathf.Lerp(0f, (float)effectBlockCount, time / effectTime) > idx)
             {
+                followPlayer.ChangeTarget(blockRenderers[idx].transform);
+
                 blockRenderers[idx].material.color = colors[idx / 4];
                 idx++;
             }
