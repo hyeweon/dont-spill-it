@@ -5,7 +5,7 @@ using UnityEngine;
 public class Straw : MonoBehaviour
 {
     private int fillHash;
-    private float remainingCoffee = 1f;
+    private float remainingCoffee;
     private float strawFill;
 
     [SerializeField] private Renderer strawRenderer;
@@ -13,7 +13,11 @@ public class Straw : MonoBehaviour
     void Start()
     {
         fillHash = Shader.PropertyToID("_Fill");
+    }
 
+    public void changeFill(float _remainingCoffee)
+    {
+        remainingCoffee = _remainingCoffee;
         StartCoroutine(Fill());
     }
 
