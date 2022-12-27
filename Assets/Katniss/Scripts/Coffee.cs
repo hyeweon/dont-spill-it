@@ -8,12 +8,13 @@ public class Coffee : MonoBehaviour
     private float initialAngleThreshold = 0.1f;
     private float finalAngleThreshold = 0.3f;
     private float currAngleThreshold;
-    private float timeThreshold = 0.3f;
+    private float timeThreshold = 0.1f;
     private float timeCount = 0f;
     private float coffeeFill;
     private float gameOverFill = 0.5f;
 
     [SerializeField] private Renderer coffeeRenderer;
+    [SerializeField] private ParticleSystem coffeeParticleSystem;
 
     void Start()
     {
@@ -32,6 +33,7 @@ public class Coffee : MonoBehaviour
         {
             coffeeFill = Mathf.Clamp(coffeeRenderer.material.GetFloat(fillHash) - 0.05f, -1f, 1f);
             coffeeRenderer.material.SetFloat(fillHash, coffeeFill);
+            coffeeParticleSystem.Play();
 
             if (coffeeFill < gameOverFill)
             {

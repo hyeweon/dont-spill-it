@@ -63,9 +63,9 @@ Material:
     - _QueueControl: -1
     - _QueueOffset: 0
     - _WobbleX: 0
-    - _WobbleZ: 0.18
+    - _WobbleZ: 0
     m_Colors:
-    - _RemapOut: {r: -1, g: 1, b: 0, a: 0}
+    - _RemapOut: {r: -0.8, g: 1, b: 0, a: 0}
     - _SideColor: {r: 0.18867916, g: 0.077909164, b: 0, a: 1}
     - _TopColor: {r: 0.30188674, g: 0.12578616, b: 0, a: 1}
   m_BuildTextureStacks: []
