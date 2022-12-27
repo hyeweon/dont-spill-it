@@ -21,7 +21,7 @@ public class Blocks : MonoBehaviour
 
     IEnumerator BlockEffect()
     {
-        var effectTime = 4f;
+        var effectTime = 3f;
         int idx = 0;
 
         for (var time = 0f; time < effectTime; time += Time.deltaTime)

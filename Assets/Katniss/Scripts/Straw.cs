@@ -13,6 +13,9 @@ public class Straw : MonoBehaviour
     void Start()
     {
         fillHash = Shader.PropertyToID("_Fill");
+
+        strawFill = 0f;
+        strawRenderer.material.SetFloat(fillHash, strawFill);
     }
 
     public void changeFill(float _remainingCoffee)
@@ -23,7 +26,7 @@ public class Straw : MonoBehaviour
 
     IEnumerator Fill()
     {
-        var effectTime = 4f;
+        var effectTime = 3f;
 
         for (var time = 0f; time <= effectTime; time += Time.deltaTime)
         {
