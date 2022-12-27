@@ -39,7 +39,7 @@ public class PlayerMove : MonoBehaviour
 
     private void LateUpdate()
     {
-        //Move();
+        Move();
         AutoRotate();
         Rotate();
     }

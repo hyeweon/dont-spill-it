@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class Coffee : MonoBehaviour
 {
+    private int fillHash;
     private float initialAngleThreshold = 0.1f;
-    private float finalAngleThreshold = 45f;
+    private float finalAngleThreshold = 0.3f;
     private float currAngleThreshold;
     private float timeThreshold = 0.3f;
     private float timeCount = 0f;
     private float coffeeFill;
+    private float gameOverFill = 0.5f;
 
     [SerializeField] private Renderer coffeeRenderer;
 
-    // Start is called before the first frame update
     void Start()
     {
+        fillHash = Shader.PropertyToID("_Fill");
+
         currAngleThreshold = initialAngleThreshold;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (gameObject.transform.rotation.z < currAngleThreshold && gameObject.transform.rotation.z > -1 * currAngleThreshold)
@@ -28,16 +30,18 @@ public class Coffee : MonoBehaviour
         timeCount += Time.deltaTime;
         if (timeCount > timeThreshold)
         {
-            coffeeFill = Mathf.Clamp(coffeeRenderer.material.GetFloat("_Fill") - 0.1f, -1f, 1f);
-            coffeeRenderer.material.SetFloat("_Fill", coffeeFill);
+            coffeeFill = Mathf.Clamp(coffeeRenderer.material.GetFloat(fillHash) - 0.05f, -1f, 1f);
+            coffeeRenderer.material.SetFloat(fillHash, coffeeFill);
 
-            if (coffeeFill < 0.5f)
+            if (coffeeFill < gameOverFill)
             {
                 Debug.Log("Game Over");
             }
 
             timeCount = 0;
-            Debug.Log("spill");
+            currAngleThreshold = Mathf.Lerp(initialAngleThreshold, finalAngleThreshold, (1 - coffeeFill) / gameOverFill);
+
+            Debug.Log($"spill {currAngleThreshold}");
         }
     }
 }
