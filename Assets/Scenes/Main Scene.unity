@@ -924,13 +924,13 @@ MonoBehaviour:
   spineTr: {fileID: 2111424763}
   agent: {fileID: 409553259}
   goal: {fileID: 343595709}
-  rotSpeed: 500
+  rotSpeed: 0.3
   rotClamp: 0
   dir: {x: 0, y: 0, z: 0}
   autoRotSpeed: 5
-  autoRotMultiply: 0.01
+  autoRotMultiply: 10
   isRight: 0
-  isActiveRot: 0
+  isActiveRot: 1
   rotAngel: 0
 --- !u!195 &409553259
 NavMeshAgent:
@@ -4072,9 +4072,33 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4116814436244718511, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116814436244718511, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116814436244718511, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.808
+      objectReference: {fileID: 0}
     - target: {fileID: 4116814436264117999, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272323302657074280, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.152
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272323302657074280, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272323302657074280, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.808
       objectReference: {fileID: 0}
     - target: {fileID: 5272323302657074293, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
       propertyPath: playOnAwake
@@ -4134,6 +4158,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8744089088904055546, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
       propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744089088904055546, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
+      propertyPath: moveWithTransform
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8744089088918212538, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}

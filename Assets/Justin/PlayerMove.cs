@@ -95,7 +95,8 @@ public class PlayerMove : MonoBehaviour
 
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        spineTr.rotation = Quaternion.Lerp(lastRot, rot, rotSpeed * Time.deltaTime);
+        spineTr.Rotate(angle * Vector3.forward);
+        //spineTr.rotation = Quaternion.Lerp(lastRot, rot, rotSpeed * Time.deltaTime);
         lastRot = spineTr.rotation;
     }
 
@@ -107,7 +108,8 @@ public class PlayerMove : MonoBehaviour
 
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        spineTr.rotation = Quaternion.Lerp(lastRot, rot, rotSpeed * Time.deltaTime);
+        spineTr.Rotate(angle * Vector3.forward * rotSpeed);
+        //spineTr.rotation = Quaternion.Lerp(lastRot, rot, rotSpeed * Time.deltaTime);
         lastRot = spineTr.rotation;
         rotAngel = angle;
     }

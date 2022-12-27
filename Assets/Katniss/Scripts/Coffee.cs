@@ -6,7 +6,7 @@ public class Coffee : MonoBehaviour
 {
     private int fillHash;
     private float initialAngleThreshold = 0.1f;
-    private float finalAngleThreshold = 0.3f;
+    private float finalAngleThreshold = 0.4f;
     private float currAngleThreshold;
     private float timeThreshold = 0.1f;
     private float timeCount = 0f;
