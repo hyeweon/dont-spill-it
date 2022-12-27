@@ -547,11 +547,12 @@ MonoBehaviour:
   spineTr: {fileID: 2111424763}
   agent: {fileID: 409553259}
   goal: {fileID: 343595709}
-  rotSpeed: 500
+  rotSpeed: 10
   rotClamp: 0
   autoRotSpeed: 5
-  autoRotMultiply: 0.01
+  autoRotMultiply: 10
   isRight: 0
+  isActiveRot: 0
 --- !u!195 &409553259
 NavMeshAgent:
   m_ObjectHideFlags: 0
