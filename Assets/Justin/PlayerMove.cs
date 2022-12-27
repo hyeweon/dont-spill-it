@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
 
     private Vector3 firstTouch;
     private Vector3 lastTouch;
-    private Quaternion lastRot;
+    private Quaternion lastRot = Quaternion.identity;
     private Vector3 dir;
     private bool isMove = false;
 
@@ -40,8 +40,9 @@ public class PlayerMove : MonoBehaviour
     private void LateUpdate()
     {
         //Move();
-        AutoRotate();
         Rotate();
+        //if (isActiveRot == true)
+        //    AutoRotate();
     }
 
     private void Move()
@@ -54,6 +55,13 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float autoRotSpeed = 5;
     [SerializeField] private float autoRotMultiply = 0.01f;
     [SerializeField] private bool isRight = false;
+    [SerializeField] private bool isActiveRot = false;
+
+    public void ChangeRot(bool _isRight, bool _isActiveRot)
+    {
+        isRight = _isRight;
+        isActiveRot = _isActiveRot;
+    }
 
 
     private void AutoRotate()
@@ -66,9 +74,9 @@ public class PlayerMove : MonoBehaviour
         {
             autoRotMultiply *= -1;
         }
-
-        autoRotSpeed = Mathf.Clamp(autoRotSpeed + (Time.deltaTime * autoRotMultiply), -rotClamp, rotClamp);
+        autoRotSpeed = Mathf.Clamp((autoRotSpeed + Time.deltaTime * autoRotMultiply), -rotClamp, rotClamp);
         var angle = lastRot.z - (autoRotSpeed);
+        angle = (angle > 180) ? angle % 360 : angle;
 
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
 
@@ -78,11 +86,29 @@ public class PlayerMove : MonoBehaviour
 
     private void Rotate()
     {
-        var angle = Mathf.Clamp(lastRot.z - dir.x, -rotClamp, rotClamp);
-        print("Angel: " + angle);
+        var angle = lastRot.z - dir.x;
+        //angle = (angle > 180) ? angle - 360 : angle;
+
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
 
         spineTr.rotation = Quaternion.Lerp(lastRot, rot, rotSpeed * Time.deltaTime);
         lastRot = spineTr.rotation;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == 9) // left
+        {
+            isActiveRot = true;
+            isRight = false;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.layer == 9) // left
+        {
+            isActiveRot = false;
+        }
     }
 }
