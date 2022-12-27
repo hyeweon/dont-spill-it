@@ -66,6 +66,6 @@ Material:
     - _WobbleZ: 0
     m_Colors:
     - _RemapOut: {r: -0.8, g: 1, b: 0, a: 0}
-    - _SideColor: {r: 0.18867916, g: 0.077909164, b: 0, a: 1}
-    - _TopColor: {r: 0.30188674, g: 0.12578616, b: 0, a: 1}
+    - _SideColor: {r: 0.3529412, g: 0.19607845, b: 0.14509805, a: 1}
+    - _TopColor: {r: 0.3529412, g: 0.19607845, b: 0.14509805, a: 1}
   m_BuildTextureStacks: []
