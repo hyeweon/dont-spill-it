@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float forwardPower;
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private Transform spineTr;
+    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private GameObject goal;
 
     [SerializeField] private float rotSpeed;
     [SerializeField] private float rotClamp;
@@ -18,6 +21,10 @@ public class PlayerMove : MonoBehaviour
     private Vector3 dir;
     private bool isMove = false;
 
+    void Start()
+    {
+        agent.SetDestination(goal.transform.position);
+    }
 
     void Update()
     {
