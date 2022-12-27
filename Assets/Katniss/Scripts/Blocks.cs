@@ -7,12 +7,15 @@ public class Blocks : MonoBehaviour
     private int effectBlockCount;
 
     [SerializeField] private Color[] colors;
+    [SerializeField] FollowPlayer followPlayer;
 
     public Renderer[] blockRenderers;
 
-    void Start()
+    public void changeBlock(float _remainingCoffee)
     {
-        effectBlockCount = 40;
+        var _effectBlockCount = (_remainingCoffee - 0.5f) * 80f;
+        effectBlockCount = (int)_effectBlockCount;
+        Debug.Log(effectBlockCount);
         StartCoroutine(BlockEffect());
     }
 
@@ -25,6 +28,8 @@ public class Blocks : MonoBehaviour
         {
             if (Mathf.Lerp(0f, (float)effectBlockCount, time / effectTime) > idx)
             {
+                followPlayer.ChangeTarget(blockRenderers[idx].transform);
+
                 blockRenderers[idx].material.color = colors[idx / 4];
                 idx++;
             }
