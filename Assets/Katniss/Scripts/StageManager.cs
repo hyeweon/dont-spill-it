@@ -13,15 +13,9 @@ public class StageManager : MonoBehaviour
 
     void Start()
     {
-        player.reachGoalEvent += new PlayerEventHandler(ShowEnding);
         player.fillLiquidEvent += new PlayerEventHandler(fillCoffee);
         player.rotStartEvent += new PlayerEventHandler(StartRotRoad);
-    }
-
-    void ShowEnding()
-    {
-        straw.changeFill(coffee.coffeeFill);
-        blocks.changeBlock(coffee.coffeeFill);
+        player.reachGoalEvent += new PlayerEventHandler(ShowEnding);
     }
 
     void fillCoffee()
@@ -35,6 +29,12 @@ public class StageManager : MonoBehaviour
     void StartRotRoad()
     {
         roadAnimator.enabled = true;
+    }
+
+    void ShowEnding()
+    {
+        straw.changeFill(coffee.coffeeFill);
+        blocks.changeBlock(coffee.coffeeFill);
     }
 
     IEnumerator FinishFillCoffee()
