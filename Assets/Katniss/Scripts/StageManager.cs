@@ -8,6 +8,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] Coffee coffee;
     [SerializeField] Straw straw;
     [SerializeField] Blocks blocks;
+    [SerializeField] Compliment compliment;
     [SerializeField] ParticleSystem fillMachine;
     [SerializeField] Animator roadAnimator;
 
@@ -16,6 +17,7 @@ public class StageManager : MonoBehaviour
         player.fillLiquidEvent += new PlayerEventHandler(fillCoffee);
         player.rotStartEvent += new PlayerEventHandler(StartRotRoad);
         player.reachGoalEvent += new PlayerEventHandler(ShowEnding);
+        player.complimentEvent += new PlayerEventHandler(Compliment);
     }
 
     void fillCoffee()
@@ -35,6 +37,11 @@ public class StageManager : MonoBehaviour
     {
         straw.changeFill(coffee.coffeeFill);
         blocks.changeBlock(coffee.coffeeFill);
+    }
+
+    void Compliment()
+    {
+        compliment.ComplimentOn();
     }
 
     IEnumerator FinishFillCoffee()
