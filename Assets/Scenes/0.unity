@@ -1358,7 +1358,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &409553262
 MonoBehaviour:
@@ -4817,6 +4817,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7071605645519197358, guid: cddc56399ae6c334cad66001ad51a76f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071605645519197358, guid: cddc56399ae6c334cad66001ad51a76f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071605645519197358, guid: cddc56399ae6c334cad66001ad51a76f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071605645519197358, guid: cddc56399ae6c334cad66001ad51a76f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -5352,6 +5364,18 @@ PrefabInstance:
     - target: {fileID: 6435881918620815659, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
       propertyPath: m_Name
       value: coffee_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6858968060489728543, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6858968060489728543, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6858968060489728543, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: 8744089088904055544, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
       propertyPath: playOnAwake
