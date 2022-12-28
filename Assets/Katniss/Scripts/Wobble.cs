@@ -11,7 +11,7 @@ public class Wobble : MonoBehaviour
     Vector3 velocity;
     Vector3 lastRot;  
     Vector3 angularVelocity;
-    public float MaxWobble = 0.0001f;
+    public float MaxWobble = 0.0002f;
     public float WobbleSpeed = 1f;
     public float Recovery = 1f;
     float wobbleAmountX;
