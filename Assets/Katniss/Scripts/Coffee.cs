@@ -57,17 +57,22 @@ public class Coffee : MonoBehaviour
 
     public void FillLiquid_Full()
     {
-        StartCoroutine(FillByCoroutine());
+        StartCoroutine(FillByCoroutine(3));
     }
 
-    IEnumerator FillByCoroutine()
+    IEnumerator FillByCoroutine(float _duration)
     {
-        while (coffeeRenderer.material.GetFloat(fillHash) < 0.98f)
+        float time = 0;
+        float value = coffeeRenderer.material.GetFloat(fillHash);
+
+        while (time < _duration)
         {
-            yield return null;
-            var value = Mathf.Lerp(0, 1, 100 * Time.deltaTime);
-            print("?????: " + value);
+            time += Time.deltaTime;
+            value = Mathf.Lerp(value, 1, time / _duration);
             coffeeRenderer.material.SetFloat(fillHash, value);
+            print("value: " + value);
+
+            yield return null;
         }
 
         coffeeRenderer.material.SetFloat(fillHash, 1);
