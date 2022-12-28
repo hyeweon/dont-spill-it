@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Coffee : MonoBehaviour
 {
@@ -13,9 +14,11 @@ public class Coffee : MonoBehaviour
     private float gameOverFill = 0.5f;
 
     public float coffeeFill;
-
+    [SerializeField] private Vector3 finalPos = new Vector3(-1.67999995f, 1.20000005f, 313.950012f);
+    [SerializeField] private Vector3 finalPos2 = new Vector3(-1.67999995f, 3.31f, 313.950012f);
     [SerializeField] private Renderer coffeeRenderer;
     [SerializeField] private ParticleSystem[] coffeeParticleSystem;
+    Sequence sequence;
 
     void Start()
     {
@@ -25,6 +28,10 @@ public class Coffee : MonoBehaviour
 
         coffeeFill = 1f;
         coffeeRenderer.material.SetFloat(fillHash, coffeeFill);
+
+        sequence = DOTween.Sequence().SetAutoKill(false).Pause();
+        sequence.Append(transform.DOMove(finalPos2, 1f));
+        sequence.Append(transform.DOMove(finalPos, 1f));
     }
 
     void Update()
@@ -53,6 +60,12 @@ public class Coffee : MonoBehaviour
 
             //Debug.Log($"spill {currAngleThreshold}");
         }
+    }
+
+    public void MoveToFinalPos()
+    {
+        transform.parent = null;
+        sequence.Restart();
     }
 
     public void FillLiquid_Full()

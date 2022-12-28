@@ -1828,6 +1828,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: straw_01
       objectReference: {fileID: 0}
+    - target: {fileID: 345217412091766201, guid: 93087b6d9933dff4d8a7f9e8686b2f5c, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 597125006629711289, guid: 93087b6d9933dff4d8a7f9e8686b2f5c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2173,17 +2177,6 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6780384738952697166, guid: f286bacb4b2bb6d43891b8dc9a208d08, type: 3}
   m_PrefabInstance: {fileID: 656031533}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &669125185 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1849937153, guid: 93087b6d9933dff4d8a7f9e8686b2f5c, type: 3}
-  m_PrefabInstance: {fileID: 540176633}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dabbe65ad6274b72b5bea28802ecd5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &686939512
 GameObject:
   m_ObjectHideFlags: 0
@@ -3312,7 +3305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 409553262}
   coffee: {fileID: 1648395019}
-  straw: {fileID: 669125185}
+  straw: {fileID: 0}
   blocks: {fileID: 751874036}
   compliment: {fileID: 695125850}
   fillMachine: {fileID: 1522721388}
@@ -3612,7 +3605,7 @@ MonoBehaviour:
   zDis: -9.56
   yDis: 4.8
   isYFollowOnly: 0
-  finalPos: {x: 0, y: 0, z: 0}
+  finalPos: {x: -1.73, y: 0, z: 303.7}
 --- !u!1001 &981921917
 PrefabInstance:
   m_ObjectHideFlags: 0

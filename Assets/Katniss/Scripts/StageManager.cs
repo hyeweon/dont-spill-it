@@ -35,7 +35,14 @@ public class StageManager : MonoBehaviour
 
     void ShowEnding()
     {
-        straw.changeFill(coffee.coffeeFill);
+        StartCoroutine(FinishEnding());
+    }
+
+    IEnumerator FinishEnding()
+    {
+        coffee.MoveToFinalPos();
+        yield return new WaitForSeconds(1.3f);
+        //straw.changeFill(coffee.coffeeFill);
         blocks.changeBlock(coffee.coffeeFill);
     }
 
