@@ -70,7 +70,6 @@ public class Coffee : MonoBehaviour
             time += Time.deltaTime;
             value = Mathf.Lerp(value, 1, time / _duration);
             coffeeRenderer.material.SetFloat(fillHash, value);
-            print("value: " + value);
 
             yield return null;
         }
