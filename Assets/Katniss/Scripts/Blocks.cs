@@ -30,7 +30,7 @@ public class Blocks : MonoBehaviour
             {
                 followPlayer.ChangeTarget(blockRenderers[idx].transform);
 
-                blockRenderers[idx].material.color = colors[idx % 10];
+                blockRenderers[idx].material.color = colors[idx % colors.Length];
                 idx++;
             }
 
