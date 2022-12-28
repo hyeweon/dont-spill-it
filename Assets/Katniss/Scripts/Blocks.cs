@@ -14,7 +14,7 @@ public class Blocks : MonoBehaviour
     public void changeBlock(float _remainingCoffee)
     {
         var _effectBlockCount = _remainingCoffee * blockRenderers.Length;
-        effectBlockCount = (int)_effectBlockCount + 1;
+        effectBlockCount = Mathf.CeilToInt(_effectBlockCount);
         Debug.Log(effectBlockCount);
         StartCoroutine(BlockEffect());
     }
