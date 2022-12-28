@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class FieldReset : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class FieldReset : MonoBehaviour
         for(int i = 0; i < 40; i++)
         {
             blocks.blockRenderers[i] = GameObject.Find($"block ({i})").GetComponent<Renderer>();
+            blocks.blockRenderers[i].gameObject.GetComponentInChildren<TextMeshProUGUI>().SetText($"{(i + 1) * 5}");
         }
     }
 }
