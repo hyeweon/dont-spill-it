@@ -41,6 +41,7 @@ public class Coffee : MonoBehaviour
         {
             coffeeFill = Mathf.Clamp(coffeeRenderer.material.GetFloat(fillHash) - 0.05f, -1f, 1f);
             coffeeRenderer.material.SetFloat(fillHash, coffeeFill);
+
             if(transform.rotation.z < 0)
                 coffeeParticleSystem[0].Play();
             else

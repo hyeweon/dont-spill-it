@@ -35,5 +35,11 @@ public class Straw : MonoBehaviour
 
             yield return null;
         }
+
+        if (remainingCoffee > 0.9f)
+        {
+            //fanfare
+            //effect
+        }
     }
 }
