@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Straw : MonoBehaviour
 {
     private int fillHash;
     private float remainingCoffee;
     private float strawFill;
+
+    private float startPos = 30f;
+    private float targetPos = 17.5f;
 
     [SerializeField] private Renderer strawRenderer;
 
@@ -22,6 +26,11 @@ public class Straw : MonoBehaviour
     {
         remainingCoffee = _remainingCoffee;
         StartCoroutine(Fill());
+    }
+
+    public void MoveDown()
+    {
+        transform.DOMoveY(targetPos, 1.3f);
     }
 
     IEnumerator Fill()
