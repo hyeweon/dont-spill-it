@@ -25,6 +25,7 @@ public class PlayerMove : MonoBehaviour
     {
         agent.SetDestination(goal.transform.position);
         agent.updateRotation = false;
+
     }
 
     void Update()
@@ -33,6 +34,7 @@ public class PlayerMove : MonoBehaviour
         {
             firstTouch.x = Input.mousePosition.x;
             isMove = true;
+            // 이전과 지금 중에 지금이 0에 더 가까우면 올라가는중
         }
         else if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -42,18 +44,16 @@ public class PlayerMove : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             isMove = false;
-            autoRotSpeed = rotAngel;
         }
     }
 
     private void LateUpdate()
     {
         //Move();
-
-        //if(isMove == true)
-        Rotate();
-        if (isActiveRot == true)
+            Rotate();
+        if (isActiveRot && !isMove)
             AutoRotate();
+
     }
 
     private void Move()
@@ -74,17 +74,14 @@ public class PlayerMove : MonoBehaviour
         isActiveRot = _isActiveRot;
     }
 
-
     private void AutoRotate()
     {
         if (isRight == true && autoRotMultiply < 0)
         {
-            print("D???");
             autoRotMultiply *= -1;
         }
         if (isRight == false && autoRotMultiply > 0)
         {
-            print("0?");
             autoRotMultiply *= -1;
         }
 
@@ -97,24 +94,19 @@ public class PlayerMove : MonoBehaviour
 
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        spineTr.Rotate(angle * Vector3.forward);
-        //spineTr.rotation = Quaternion.Lerp(lastRot, rot, rotSpeed * Time.deltaTime);
+        spineTr.Rotate(angle * Vector3.forward * Time.deltaTime);
         lastRot = spineTr.rotation;
     }
 
-    [SerializeField] private float rotAngel;
     private void Rotate()
     {
-        var angle = rotAngel +(-dir.x * Time.deltaTime);
-        //angle = (angle > 180) ? angle % 180 : angle;
+        var angle = transform.eulerAngles.z + -dir.x;
         angle = Mathf.Clamp(angle, -rotClamp, rotClamp);
 
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        spineTr.Rotate(angle * Vector3.forward * rotSpeed);
-        //spineTr.rotation = Quaternion.Lerp(lastRot, rot, rotSpeed * Time.deltaTime);
+        spineTr.rotation = Quaternion.Slerp(lastRot, rot, rotSpeed * Time.deltaTime);
         lastRot = spineTr.rotation;
-        rotAngel = angle;
     }
 
     private void OnCollisionEnter(Collision collision)

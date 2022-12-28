@@ -54,7 +54,7 @@ public class Coffee : MonoBehaviour
             timeCount = 0;
             currAngleThreshold = Mathf.Lerp(initialAngleThreshold, finalAngleThreshold, (1 - coffeeFill) / gameOverFill);
 
-            Debug.Log($"spill {currAngleThreshold}");
+            //Debug.Log($"spill {currAngleThreshold}");
         }
     }
 
