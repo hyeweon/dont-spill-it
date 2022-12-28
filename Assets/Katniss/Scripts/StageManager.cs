@@ -5,6 +5,7 @@ using UnityEngine;
 public class StageManager : MonoBehaviour
 {
     [SerializeField] Player player;
+    [SerializeField] PlayerMove playerMove;
     [SerializeField] Coffee coffee;
     [SerializeField] Straw straw;
     [SerializeField] Blocks blocks;
@@ -18,6 +19,10 @@ public class StageManager : MonoBehaviour
         player.rotStartEvent += new PlayerEventHandler(StartRotRoad);
         player.reachGoalEvent += new PlayerEventHandler(ShowEnding);
         player.complimentEvent += new PlayerEventHandler(Compliment);
+
+        player.autoRot_REvent += new PlayerEventHandler(RotateRight);
+        player.autoRot_LEvent += new PlayerEventHandler(RotateLeft);
+        player.autoRot_ExitEvent += new PlayerEventHandler(RotateExit);
     }
 
     void fillCoffee()
@@ -59,5 +64,20 @@ public class StageManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         fillMachine.Stop();
+    }
+
+    void RotateRight()
+    {
+        playerMove.ChangeRot(true);
+    }
+
+    void RotateLeft()
+    {
+        playerMove.ChangeRot(false);
+    }
+
+    void RotateExit()
+    {
+        playerMove.inActiveAutoRot();
     }
 }

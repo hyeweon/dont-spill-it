@@ -68,10 +68,16 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private bool isRight = false;
     [SerializeField] private bool isActiveRot = false;
 
-    public void ChangeRot(bool _isRight, bool _isActiveRot)
+    public void ChangeRot(bool _isRight)
     {
+        isActiveRot = true;
         isRight = _isRight;
-        isActiveRot = _isActiveRot;
+    }
+
+    public void inActiveAutoRot()
+    {
+        isActiveRot = false;
+        isRight = false;
     }
 
     private void AutoRotate()
@@ -109,20 +115,20 @@ public class PlayerMove : MonoBehaviour
         lastRot = spineTr.rotation;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.layer == 9) // left
-        {
-            isActiveRot = true;
-            isRight = false;
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if(collision.gameObject.layer == 9) // left
+    //    {
+    //        isActiveRot = true;
+    //        isRight = false;
+    //    }
+    //}
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.layer == 9) // left
-        {
-            isActiveRot = false;
-        }
-    }
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.layer == 9) // left
+    //    {
+    //        isActiveRot = false;
+    //    }
+    //}
 }

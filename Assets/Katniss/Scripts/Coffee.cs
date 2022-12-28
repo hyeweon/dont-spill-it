@@ -32,6 +32,7 @@ public class Coffee : MonoBehaviour
         sequence = DOTween.Sequence().SetAutoKill(false).Pause();
         sequence.Append(transform.DOMove(finalPos2, 1f));
         sequence.Append(transform.DOMove(finalPos, 1f));
+        sequence.Append(transform.DORotate(new Vector3(5,0,0), 0.5f));
     }
 
     void Update()
