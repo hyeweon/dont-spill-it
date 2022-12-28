@@ -9,11 +9,13 @@ public class StageManager : MonoBehaviour
     [SerializeField] Straw straw;
     [SerializeField] Blocks blocks;
     [SerializeField] ParticleSystem fillMachine;
+    [SerializeField] Animator roadAnimator;
 
     void Start()
     {
         player.reachGoalEvent += new PlayerEventHandler(ShowEnding);
         player.fillLiquidEvent += new PlayerEventHandler(fillCoffee);
+        player.rotStartEvent += new PlayerEventHandler(StartRotRoad);
     }
 
     void ShowEnding()
@@ -26,5 +28,10 @@ public class StageManager : MonoBehaviour
     {
         fillMachine.Play();
         coffee.FillLiquid_Full();
+    }
+
+    void StartRotRoad()
+    {
+        roadAnimator.enabled = true;
     }
 }

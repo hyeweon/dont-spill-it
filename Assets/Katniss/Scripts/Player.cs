@@ -8,14 +8,17 @@ public class Player : MonoBehaviour
 {
     private int goalLayer;
     private int fillLayer;
+    private int rotStartLayer;
 
     public event PlayerEventHandler reachGoalEvent;
     public event PlayerEventHandler fillLiquidEvent;
+    public event PlayerEventHandler rotStartEvent;
 
     void Start()
     {
         goalLayer = LayerMask.NameToLayer("Goal");
         fillLayer = LayerMask.NameToLayer("Fill");
+        rotStartLayer = LayerMask.NameToLayer("RotStart");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,10 +28,14 @@ public class Player : MonoBehaviour
             reachGoalEvent();
         }
 
-        if(other.gameObject.layer == fillLayer)
+        else if(other.gameObject.layer == fillLayer)
         {
-            print("Enter");
             fillLiquidEvent();
+        }
+
+        else if (other.gameObject.layer == rotStartLayer)
+        {
+            rotStartEvent();
         }
     }
 }
