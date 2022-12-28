@@ -7,7 +7,7 @@ public class BlockGenerator : MonoBehaviour
 {
     [SerializeField] private  GameObject blockOBJ;
 
-    [SerializeField] private float yDis = 0;
+    private float yDis = 0;
     [SerializeField] private int count = 0;
     [SerializeField] private int increasNum = 0;
 
