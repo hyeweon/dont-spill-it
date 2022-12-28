@@ -2497,6 +2497,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tmp: {fileID: 360889695}
+  compliment_contents:
+  - Awesome
+  - Great
+  - Amazing
+  - Fantastic
   size: 50
 --- !u!1001 &700986446
 PrefabInstance:
