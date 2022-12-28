@@ -91,7 +91,9 @@ public class PlayerMove : MonoBehaviour
         autoRotSpeed += Time.deltaTime * autoRotMultiply;
 
         var angle = lastRot.z - (autoRotSpeed);
-        angle = (angle > 180) ? angle % 360 : angle;
+        //angle = (angle > 180) ? angle % 360 : angle;
+        angle = Mathf.Clamp(angle, -180, 180);
+
 
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
 
@@ -105,7 +107,7 @@ public class PlayerMove : MonoBehaviour
     {
         var angle = rotAngel +(-dir.x * Time.deltaTime);
         //angle = (angle > 180) ? angle % 180 : angle;
-        angle = Mathf.Clamp(angle, -180, 180);
+        angle = Mathf.Clamp(angle, -rotClamp, rotClamp);
 
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
 
