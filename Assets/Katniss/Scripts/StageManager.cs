@@ -28,10 +28,19 @@ public class StageManager : MonoBehaviour
     {
         fillMachine.Play();
         coffee.FillLiquid_Full();
+
+        StartCoroutine(FinishFillCoffee());
     }
 
     void StartRotRoad()
     {
         roadAnimator.enabled = true;
+    }
+
+    IEnumerator FinishFillCoffee()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        fillMachine.Stop();
     }
 }
