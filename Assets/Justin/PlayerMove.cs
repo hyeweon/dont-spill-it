@@ -19,6 +19,8 @@ public class PlayerMove : MonoBehaviour
     private Vector3 lastTouch;
     private Quaternion lastRot = Quaternion.identity;
     [SerializeField] private Vector3 dir;
+
+    private bool isOnTouch = false;
     private bool isMove = false;
 
     //void Start()
@@ -43,6 +45,8 @@ public class PlayerMove : MonoBehaviour
         {
             firstTouch.x = Input.mousePosition.x;
             isMove = true;
+
+            isOnTouch = true;
             // 이전과 지금 중에 지금이 0에 더 가까우면 올라가는중
         }
         else if (Input.GetKey(KeyCode.Mouse0))
@@ -53,13 +57,15 @@ public class PlayerMove : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             isMove = false;
+            isOnTouch = false;
         }
     }
 
     private void LateUpdate()
     {
         //Move();
-            Rotate();
+        Rotate();
+
         if (isActiveRot && !isMove)
             AutoRotate();
 
@@ -121,7 +127,11 @@ public class PlayerMove : MonoBehaviour
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
 
         spineTr.rotation = Quaternion.Slerp(lastRot, rot, rotSpeed * Time.deltaTime);
-        lastRot = spineTr.rotation;
+
+        if (isOnTouch)
+        {
+            lastRot = spineTr.rotation;
+        }
     }
 
     public void Stop()

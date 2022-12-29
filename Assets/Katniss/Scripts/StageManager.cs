@@ -60,6 +60,7 @@ public class StageManager : MonoBehaviour
     {
         coffee.MoveToFinalPos();
         straw.MoveDown();
+        playerMove.enabled = false;
 
         yield return new WaitForSeconds(1.3f);
 
