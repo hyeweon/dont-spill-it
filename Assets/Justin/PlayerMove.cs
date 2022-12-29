@@ -21,11 +21,18 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Vector3 dir;
     private bool isMove = false;
 
-    void Start()
+    //void Start()
+    //{
+    //    agent.SetDestination(goal.transform.position);
+    //    agent.updateRotation = false;
+
+    //}
+
+    private void OnEnable()
     {
+        playerAnimator.enabled = true;
         agent.SetDestination(goal.transform.position);
         agent.updateRotation = false;
-
     }
 
     void Update()
