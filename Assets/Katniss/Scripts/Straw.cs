@@ -9,8 +9,7 @@ public class Straw : MonoBehaviour
     private float remainingCoffee;
     private float strawFill;
 
-    private float startPos = 30f;
-    private float targetPos = 14.6f;
+    private float targetPos = 77f;
 
     [SerializeField] private Renderer strawRenderer;
 
