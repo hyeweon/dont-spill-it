@@ -94,19 +94,20 @@ public class Coffee : MonoBehaviour
     IEnumerator FillByCoroutine(float _duration)
     {
         float time = 0;
-        float value = coffeeRenderer.material.GetFloat(fillHash);
+        float value = coffeeFill;
 
-        var fillAmount = 0.2f;
+        var fillAmount = 0.3f;
+
+        coffeeFill = Mathf.Clamp(coffeeFill + fillAmount, 0f, 1f);
 
         while (time < _duration)
         {
             time += Time.deltaTime;
-            value = Mathf.Lerp(value, Mathf.Clamp(value + fillAmount, 0f, 1f), time / _duration);
-            coffeeRenderer.material.SetFloat(fillHash, value);
+            coffeeRenderer.material.SetFloat(fillHash, Mathf.Lerp(value, coffeeFill, time / _duration));
 
             yield return null;
         }
 
-        coffeeRenderer.material.SetFloat(fillHash, 1);
+        coffeeRenderer.material.SetFloat(fillHash, coffeeFill);
     }
 }

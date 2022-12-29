@@ -7,8 +7,8 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] private float speed = 0;
     [SerializeField] private Transform player;
 
-    [SerializeField] private float zDis = -9.56f;
-    [SerializeField] private float yDis = 4.8f;
+    [SerializeField] private float zDis = -7f;
+    [SerializeField] private float yDis = 5f;
 
     [SerializeField] private bool isYFollowOnly = false;
     private float disZ = 0;
