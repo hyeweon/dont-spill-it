@@ -11,6 +11,7 @@ public class Straw : MonoBehaviour
 
     private float targetPos = 77f;
 
+    [SerializeField] private ParticleSystem ps_JuiceEffect;
     [SerializeField] private Renderer strawRenderer;
 
     void Start()
@@ -51,6 +52,7 @@ public class Straw : MonoBehaviour
         {
             //fanfare
             //effect
+            ps_JuiceEffect.Play();
         }
     }
 }
