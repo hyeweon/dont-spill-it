@@ -10,11 +10,15 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] private float zDis = -7f;
     [SerializeField] private float yDis = 5f;
 
-    [SerializeField] private bool isYFollowOnly = false;
+    [SerializeField] private float endingPlusXvalue = 0;
+    [SerializeField] private float endingPlusYvalue = 10;
+    [SerializeField] private float endingPlusZvalue = 0;
+
     private float disZ = 0;
     private float disY = 0;
 
     [SerializeField] private Vector3 finalPos;
+    [SerializeField] private bool isYFollowOnly = false;
 
     private void LateUpdate()
     {
@@ -29,8 +33,8 @@ public class FollowPlayer : MonoBehaviour
 
         if (isYFollowOnly == true)
         {
-            Vector3 target_pos = new Vector3(finalPos.x, player.position.y, finalPos.z);
-            transform.position = Vector3.Lerp(transform.position, target_pos, speed * Time.deltaTime);
+            Vector3 target_pos = new Vector3(finalPos.x + endingPlusXvalue, player.position.y + endingPlusYvalue, finalPos.z + endingPlusZvalue);
+            transform.position = Vector3.Lerp(transform.position , target_pos, speed * Time.deltaTime);
         }
     }
 
