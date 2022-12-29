@@ -37,6 +37,8 @@ public class Blocks : MonoBehaviour
             yield return null;
         }
 
-
+        idx = effectBlockCount - 1;
+        followPlayer.ChangeTarget(blockRenderers[idx].transform);
+        blockRenderers[idx].material.color = colors[idx % colors.Length];
     }
 }

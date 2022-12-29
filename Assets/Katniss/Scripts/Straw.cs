@@ -44,6 +44,9 @@ public class Straw : MonoBehaviour
             yield return null;
         }
 
+        strawFill = Mathf.Clamp(remainingCoffee, 0f, 1f);
+        strawRenderer.material.SetFloat(fillHash, strawFill);
+
         if (remainingCoffee > 0.9f)
         {
             //fanfare
