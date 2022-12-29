@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+public delegate void CoffeeEventHandler();
+
 public class Coffee : MonoBehaviour
 {
+    private bool isGameOver = false;
+
     private int fillHash;
-    private float initialAngleThreshold = 0.1f;
-    private float finalAngleThreshold = 0.4f;
+    private float initialAngleThreshold = 0.05f;
+    private float finalAngleThreshold = 0.3f;
     private float currAngleThreshold;
     private float timeThreshold = 0.1f;
     private float timeCount = 0f;
@@ -22,6 +26,8 @@ public class Coffee : MonoBehaviour
 
     [SerializeField] private Warning warning;
     Sequence sequence;
+
+    public event CoffeeEventHandler gameOverEvent;
 
     void Start()
     {
@@ -40,6 +46,11 @@ public class Coffee : MonoBehaviour
 
     void Update()
     {
+        if (isGameOver)
+            return;
+
+        currAngleThreshold = Mathf.Lerp(initialAngleThreshold, finalAngleThreshold, (1 - coffeeFill) / gameOverFill);
+
         if (gameObject.transform.rotation.z < currAngleThreshold && gameObject.transform.rotation.z > -1 * currAngleThreshold)
             return;
 
@@ -57,11 +68,13 @@ public class Coffee : MonoBehaviour
 
             if (coffeeFill < gameOverFill)
             {
+                isGameOver = true;
+
                 Debug.Log("Game Over");
+                gameOverEvent();
             }
 
             timeCount = 0;
-            currAngleThreshold = Mathf.Lerp(initialAngleThreshold, finalAngleThreshold, (1 - coffeeFill) / gameOverFill);
 
             //Debug.Log($"spill {currAngleThreshold}");
         }
@@ -75,7 +88,7 @@ public class Coffee : MonoBehaviour
 
     public void FillLiquid_Full()
     {
-        StartCoroutine(FillByCoroutine(3));
+        StartCoroutine(FillByCoroutine(0.8f));
     }
 
     IEnumerator FillByCoroutine(float _duration)
@@ -83,10 +96,12 @@ public class Coffee : MonoBehaviour
         float time = 0;
         float value = coffeeRenderer.material.GetFloat(fillHash);
 
+        var fillAmount = 0.2f;
+
         while (time < _duration)
         {
             time += Time.deltaTime;
-            value = Mathf.Lerp(value, 1, time / _duration);
+            value = Mathf.Lerp(value, Mathf.Clamp(value + fillAmount, 0f, 1f), time / _duration);
             coffeeRenderer.material.SetFloat(fillHash, value);
 
             yield return null;
