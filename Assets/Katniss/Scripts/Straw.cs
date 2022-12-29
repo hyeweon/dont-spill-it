@@ -13,6 +13,7 @@ public class Straw : MonoBehaviour
 
     [SerializeField] private ParticleSystem ps_JuiceEffect;
     [SerializeField] private Renderer strawRenderer;
+    [SerializeField] private CanvasGroup cg_EndUI;
 
     void Start()
     {
@@ -53,6 +54,8 @@ public class Straw : MonoBehaviour
             //fanfare
             //effect
             ps_JuiceEffect.Play();
+            yield return new WaitForSeconds(2);
+            cg_EndUI.DOFade(1, 0.6f);
         }
     }
 }
