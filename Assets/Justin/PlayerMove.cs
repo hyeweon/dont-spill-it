@@ -15,6 +15,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float rotSpeed;
     [SerializeField] private float rotClamp;
 
+    [SerializeField] private Canvas onBoardingCanvas;
+
     private Vector3 firstTouch;
     private Vector3 lastTouch;
     private Quaternion lastRot = Quaternion.identity;
@@ -47,6 +49,9 @@ public class PlayerMove : MonoBehaviour
             isMove = true;
 
             isOnTouch = true;
+
+            if (onBoardingCanvas.enabled)
+                onBoardingCanvas.enabled = false;
             // 이전과 지금 중에 지금이 0에 더 가까우면 올라가는중
         }
         else if (Input.GetKey(KeyCode.Mouse0))
