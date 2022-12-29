@@ -16,8 +16,11 @@ public class Coffee : MonoBehaviour
     public float coffeeFill;
     [SerializeField] private Vector3 finalPos = new Vector3(-1.67999995f, 1.20000005f, 313.950012f);
     [SerializeField] private Vector3 finalPos2 = new Vector3(-1.67999995f, 3.31f, 313.950012f);
+
     [SerializeField] private Renderer coffeeRenderer;
     [SerializeField] private ParticleSystem[] coffeeParticleSystem;
+
+    [SerializeField] private Warning warning;
     Sequence sequence;
 
     void Start()
@@ -31,8 +34,8 @@ public class Coffee : MonoBehaviour
 
         sequence = DOTween.Sequence().SetAutoKill(false).Pause();
         sequence.Append(transform.DOMove(finalPos2, 1f));
+        sequence.Join(transform.DORotate(new Vector3(-5,0,0), 0.5f));
         sequence.Append(transform.DOMove(finalPos, 1f));
-        sequence.Append(transform.DORotate(new Vector3(5,0,0), 0.5f));
     }
 
     void Update()
@@ -46,7 +49,8 @@ public class Coffee : MonoBehaviour
             coffeeFill = Mathf.Clamp(coffeeRenderer.material.GetFloat(fillHash) - 0.05f, -1f, 1f);
             coffeeRenderer.material.SetFloat(fillHash, coffeeFill);
 
-            if(transform.rotation.z < 0)
+            warning.WarningTextOn();
+            if (transform.rotation.z < 0)
                 coffeeParticleSystem[0].Play();
             else
                 coffeeParticleSystem[1].Play();

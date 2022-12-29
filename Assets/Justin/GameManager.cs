@@ -13,19 +13,14 @@ public class GameManager : MonoBehaviour
     {
         stageManager.enabled = false;
         playerMove.enabled = false;
-        print("ㅎㅏ이루000");
 
         startCount.OnCount((result) => {
-            print("ㅎㅏ이루111");
-
             if (result == true)
             {
                 stageManager.enabled = true;
                 playerMove.enabled = true;
             }
         });
-
-        print("ㅎㅏ이루222");
     }
 
 }
