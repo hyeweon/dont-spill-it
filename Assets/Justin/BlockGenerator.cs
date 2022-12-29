@@ -11,11 +11,12 @@ public class BlockGenerator : MonoBehaviour
     [SerializeField] private int count = 0;
     [SerializeField] private int increasNum = 0;
 
+    [SerializeField] Blocks blocks;
+
 
     private void Reset()
     {
         count = 40;
-        blockOBJ = Resources.Load<GameObject>("Block");
     }
 
     public void DestoryAll()
@@ -51,15 +52,16 @@ public class BlockGenerator : MonoBehaviour
         yDis = blockOBJ.GetComponent<Renderer>().bounds.size.y;
 
         float upYPos = 0;
-        float num = 0;
 
         for (int i = 0; i < count; i++)
         {
-            var pos = new Vector3(transform.position.x, transform.position.y + upYPos, transform.position.z);
+            var pos = new Vector3(blockOBJ.transform.position.x, blockOBJ.transform.position.y + upYPos, blockOBJ.transform.position.z);
             GameObject go =  Instantiate(blockOBJ, pos, Quaternion.identity, transform);
-            go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"{num}";
+            go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText($"{(i + 1) * 5}");
+
+            blocks.blockRenderers[i] = go.GetComponent<Renderer>();
+
             upYPos = upYPos + yDis;
-            num = num + increasNum;
         }
     }
 }
