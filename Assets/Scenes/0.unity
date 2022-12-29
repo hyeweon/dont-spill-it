@@ -9444,7 +9444,7 @@ MonoBehaviour:
   playerMove: {fileID: 409553256}
   coffee: {fileID: 1648395019}
   straw: {fileID: 540176636}
-  blocks: {fileID: 751874036}
+  blocks: {fileID: 821492785}
   compliment: {fileID: 695125850}
   fillMachine: {fileID: 1522721388}
   roadAnimator: {fileID: 317881178}
@@ -19645,7 +19645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198039942544698878, guid: 300a5f9f84b9ebb448ae73a63a672838, type: 3}
       propertyPath: playOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198039942544698878, guid: 300a5f9f84b9ebb448ae73a63a672838, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
@@ -19653,7 +19653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198949135766812572, guid: 300a5f9f84b9ebb448ae73a63a672838, type: 3}
       propertyPath: playOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198949135766812572, guid: 300a5f9f84b9ebb448ae73a63a672838, type: 3}
       propertyPath: CollisionModule.type
@@ -19942,6 +19942,10 @@ PrefabInstance:
       value: Right_coffee_effect
       objectReference: {fileID: 0}
     - target: {fileID: 1583859883331457910, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1583859883331457910, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.1
       objectReference: {fileID: 0}
@@ -20031,7 +20035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5916331525073308561, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 5916331525073308561, guid: c303a0f5eda56d4489656e2f482e02a8, type: 3}
       propertyPath: m_LocalPosition.z
