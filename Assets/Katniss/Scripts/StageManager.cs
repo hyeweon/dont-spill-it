@@ -41,6 +41,7 @@ public class StageManager : MonoBehaviour
     void StartRotRoad()
     {
         roadAnimator.enabled = true;
+        roadAnimator.SetBool("SetRight", true);
     }
 
     void ShowEnding()
