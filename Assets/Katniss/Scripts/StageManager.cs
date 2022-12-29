@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] Compliment compliment;
     [SerializeField] ParticleSystem fillMachine;
     [SerializeField] Animator roadAnimator;
+    [SerializeField] Image fadeOutPanel;
 
     void Start()
     {
@@ -23,6 +26,8 @@ public class StageManager : MonoBehaviour
         player.autoRot_REvent += new PlayerEventHandler(RotateRight);
         player.autoRot_LEvent += new PlayerEventHandler(RotateLeft);
         player.autoRot_ExitEvent += new PlayerEventHandler(RotateExit);
+
+        coffee.gameOverEvent += new CoffeeEventHandler(GameOver);
     }
 
     void fillCoffee()
@@ -41,6 +46,14 @@ public class StageManager : MonoBehaviour
     void ShowEnding()
     {
         StartCoroutine(FinishEnding());
+    }
+
+    void GameOver()
+    {
+        Time.timeScale = 0f;
+
+        playerMove.Stop();
+        StartCoroutine(FadeOut());
     }
 
     IEnumerator FinishEnding()
@@ -79,5 +92,23 @@ public class StageManager : MonoBehaviour
     void RotateExit()
     {
         playerMove.inActiveAutoRot();
+    }
+
+    IEnumerator FadeOut()
+    {
+        var fadeOutTime = 0.5f;
+        var color = Color.black;
+
+        for (var time = 0f; time < fadeOutTime; time += Time.unscaledDeltaTime)
+        {
+            color.a = time / fadeOutTime;
+            fadeOutPanel.color = color;
+            yield return null;
+        }
+
+        fadeOutPanel.color = Color.black;
+
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -30,7 +30,9 @@ public class PlayerMove : MonoBehaviour
 
     private void OnEnable()
     {
-        playerAnimator.enabled = true;
+        //playerAnimator.enabled = true;
+        playerAnimator.SetTrigger("StartGame");
+
         agent.SetDestination(goal.transform.position);
         agent.updateRotation = false;
     }
@@ -120,6 +122,12 @@ public class PlayerMove : MonoBehaviour
 
         spineTr.rotation = Quaternion.Slerp(lastRot, rot, rotSpeed * Time.deltaTime);
         lastRot = spineTr.rotation;
+    }
+
+    public void Stop()
+    {
+        isMove = false;
+        playerAnimator.enabled = false;
     }
 
     //private void OnCollisionEnter(Collision collision)
