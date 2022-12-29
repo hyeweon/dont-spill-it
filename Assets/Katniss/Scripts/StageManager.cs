@@ -27,7 +27,7 @@ public class StageManager : MonoBehaviour
 
     void fillCoffee()
     {
-        fillMachine.Play();
+        //fillMachine.Play();
         coffee.FillLiquid_Full();
 
         StartCoroutine(FinishFillCoffee());
@@ -61,7 +61,7 @@ public class StageManager : MonoBehaviour
 
     IEnumerator FinishFillCoffee()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
 
         fillMachine.Stop();
     }
